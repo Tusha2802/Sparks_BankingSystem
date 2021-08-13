@@ -1,0 +1,30 @@
+<%- include("header") -%>
+    
+    <div>
+        <table border="2" cellspacing="0" cellpadding="5" style="width: 90%;text-align: center;font-size: 25px;margin: 5%;">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Balance</th>
+                <th>Tranfer Money</th>
+            </tr>
+            <% all.forEach(function(a) { %>
+                <tr>
+                    <form action="/send_money" method="POST">
+                        <td><%= a.id %></td>
+                        <td><%= a.name %></td>
+                        <td><%= a.email %></td>
+                        <td><%= a.balance %></td>
+                        <td>
+                            <input type="hidden" name="custom_id" value="<%= a.id %>">
+                            <input type="submit" value="Perform Transaction" style="border: none; font-size: 20px;">
+                            
+                        </td>
+                    </form>
+                </tr>
+            <% })  %>
+            
+        </table>
+        
+<%- include("footer") -%>

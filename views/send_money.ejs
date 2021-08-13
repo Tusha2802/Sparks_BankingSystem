@@ -1,0 +1,41 @@
+<%- include("header") -%>
+
+    <h1 style="text-align: center;">Transaction</h1>
+    <h2 style="text-align: center;color: red;"><%= msg %></h2>
+    <form action="/changes" method="POST">
+        <table border="2" cellspacing="0" cellpadding="5" style="width: 90%;text-align: center;font-size: 25px;margin: 5%">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Balance</th>
+            </tr>
+            
+                <% all.forEach(function(a) { %>
+                    <% if(a.id == c_id ) { %>
+                    <tr>
+                        <td><%= a.id %></td>
+                        <td><%= a.name %></td>
+                        <td><%= a.email %></td>
+                        <td><%= a.balance %></td>
+                    </tr>
+                    <input type="hidden" name="sender" value="<%= a.id %>">
+                <% }})  %>
+                
+            </table>
+    
+            <h2 style="margin-left:5%;">Transfer To:</h2>
+            <select name="reciever" style="font-size: 20px;width: 80%;margin:0px 10%; padding: 5px;">
+                <% all.forEach(function(b) { %>
+                    <% if(b.id != c_id ) { %>
+                        <option><%= b.name %></option>
+                <% }})  %>
+            </select>
+        
+            <h2 style="margin-left:5%;">Amount To Be Transferred:</h2>
+            <input type="text" name="amt" style="margin: 0px 10%;font-size: 20px;width: 79%;padding: 5px;"><br>
+            <input type="submit" value="Transfer" style="padding: 10px; border-radius: 30%;margin: 30px 47%;font-size: 20px;">
+        </form>
+        
+        
+<%- include("footer") -%>
