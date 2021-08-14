@@ -1,3 +1,5 @@
+
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const Date = require(__dirname + "/date.js");
@@ -20,67 +22,6 @@ const customerSchema = {
 
 const customer = mongoose.model("customer", customerSchema);
 
-// const c2 = new customer({
-//     id:2,
-//     name: "Arindam",
-//     email: "arindamsingha@gmail.com",
-//     balance: 15000
-// });
-// const c3 = new customer({
-//     id:3,
-//     name: "Ayushaman",
-//     email: "ayushman@gmail.com",
-//     balance: 35000
-// });
-// const c4 = new customer({
-//     id:4,
-//     name: "Mrigank",
-//     email: "mrigank@gmail.com",
-//     balance: 25000
-// });
-// const c5 = new customer({
-//     id:5,
-//     name: "Samarth",
-//     email: "samarth@gmail.com",
-//     balance: 75000
-// });
-// const c6 = new customer({
-//     id:6,
-//     name: "Krrish",
-//     email: "krrish@gmail.com",
-//     balance: 55600
-// });
-// const c7 = new customer({
-//     id:7,
-//     name: "Anmol",
-//     email: "anmol@gmail.com",
-//     balance: 49500
-// });
-// const c8 = new customer({
-//     id:8,
-//     name: "Vinay",
-//     email: "vinay@gmail.com",
-//     balance: 22000
-// });
-// const c9 = new customer({
-//     id:9,
-//     name: "Agneya",
-//     email: "agneya@gmail.com",
-//     balance: 69000
-// });
-// const c10 = new customer({
-//     id:10,
-//     name: "Ayush",
-//     email: "ayush@gmail.com",
-//     balance: 99500
-// });
-// allCustomers = [c2,c3,c4,c5,c6,c7,c8,c9,c10]
-// customer.insertMany(allCustomers, function(err){
-//     if(err)
-//         console.log(err);
-//     else
-//         console.log("successfully updated");
-// });
 const today = Date.getDate();
 app.get("/", function(req,res){
     res.render('home',{date: today});
@@ -130,7 +71,7 @@ app.post("/changes", function(req,res){
     const s_id = req.body.sender;
     const r = req.body.reciever;
     const amt = req.body.amt;
-    console.log(amt);
+    //console.log(amt);
     customer.findOne({id: {$eq: s_id}}, function(err,result){
         if(!err){
             if(result.balance >= amt){
