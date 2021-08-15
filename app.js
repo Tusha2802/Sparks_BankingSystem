@@ -11,7 +11,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
-mongoose.connect("mongodb://localhost:27017/CustomersDb", {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://Admin-TusharSingla:Tushar2802@cluster0.eq8ho.mongodb.net/CustomersDb?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true });
 
 const customerSchema = {
     id: Number,
